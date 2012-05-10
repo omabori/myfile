@@ -34,6 +34,17 @@ case ${UID} in
     ;;
 esac
 
+#
+# set title
+#
+case "${TERM}" in
+xterm*)
+precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+}
+;;
+esac
+
 # auto change directory
 #
 #setopt auto_cd
